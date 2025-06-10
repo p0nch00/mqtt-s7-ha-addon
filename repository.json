@@ -1,0 +1,5 @@
+{
+    "name": "Home Assistant MQTT TO S7",
+    "url": "https://github.com/p0nch00/mqtt-s7-ha-addon",
+    "maintainer": "Joshua Anschuetz <joshi@servcity.org>"
+}
