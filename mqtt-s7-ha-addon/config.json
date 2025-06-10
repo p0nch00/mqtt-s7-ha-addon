@@ -1,0 +1,11 @@
+{
+  "name": "mqtt-s7-ha-addon",
+  "version": "1.0.0",
+  "slug": "mqtt-s7-ha-addon",
+  "description": "Connect S7 to MQTT",
+  "startup": "application",
+  "boot": "auto",
+  "host_network": false,
+  "options": {},
+  "schema": {}
+}
