@@ -1,0 +1,6 @@
+build_from:
+  aarch64: node:slim
+  amd64: node:slim
+  i386: node:slim
+  armhf: node:slim
+  armv7: node:slim
