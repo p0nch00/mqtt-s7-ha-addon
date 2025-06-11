@@ -4,11 +4,11 @@ FROM node:slim
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY ../bin/package*.json ./
+COPY bin/package*.json ./
 RUN npm install --only=production
 
 # Bundle app source
-COPY ../bin/* ./
+COPY bin/* ./
 
 # Create a symlink to Home Assistant's /data/config.json
 RUN ln -s /data/config.json /usr/src/app/config.json
