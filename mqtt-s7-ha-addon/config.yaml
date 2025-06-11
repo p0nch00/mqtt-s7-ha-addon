@@ -1,5 +1,5 @@
 name: mqtt-s7-ha-addon
-version: 1.0.12
+version: 1.0.13
 slug: s7tomqtt
 url: https://github.com/p0nch00/mqtt-s7-ha-addon
 description: Connect S7 to MQTT
@@ -14,3 +14,4 @@ arch:
 map:
 - type: homeassistant_config
   read_only: False
+  path: /ha-cfg
