@@ -111,6 +111,7 @@ function plc_update_loop() {
 			sf.debug("Error while reading from PLC !");
 			return;
 		}
+		console.log(readings)
 
 		// publish all data
 		for (var topic in readings) {
