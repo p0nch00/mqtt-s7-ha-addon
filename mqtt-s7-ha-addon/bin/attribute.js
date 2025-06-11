@@ -119,6 +119,8 @@ module.exports = class attribute {
 			let should_update = ((now - this.last_update) > this.update_interval) &&
 				this.update_interval != 0;
 
+			console.log("54464565544")
+
 			// last_value / last_update update
 			if (data != this.last_value && this.update_interval == 0) {
 				should_update = true;
