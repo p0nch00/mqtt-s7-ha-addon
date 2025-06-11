@@ -9,6 +9,7 @@ RUN npm install --only=production
 
 # Bundle app source
 COPY bin/* ./
+COPY bin/devices/* ./devices/
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
