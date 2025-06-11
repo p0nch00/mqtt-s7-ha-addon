@@ -14,4 +14,4 @@ COPY bin/* ./
 RUN ln -s /data/config.json /usr/src/app/config.json
 
 # Start CMD
-CMD [ "npm", "start" ]
+CMD ["./run.sh"]
