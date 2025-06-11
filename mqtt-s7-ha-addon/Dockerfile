@@ -14,4 +14,4 @@ COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
 # Start CMD
-CMD ["./run.sh"]
+CMD ["/run.sh"]
