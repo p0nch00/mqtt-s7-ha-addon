@@ -126,6 +126,7 @@ module.exports = class attribute {
 
 			// send mqtt msg if necessary
 			if (should_update) {
+				console.log("actually updatng mqtt")
 				this.last_value = data;
 				this.last_update = now;
 
