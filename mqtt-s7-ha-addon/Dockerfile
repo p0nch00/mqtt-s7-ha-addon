@@ -4,7 +4,7 @@ FROM node:slim
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY bin/package*.json ./
+COPY ../bin/package*.json ./
 RUN npm install --only=production
 
 # Bundle app source
