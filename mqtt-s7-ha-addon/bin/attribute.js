@@ -101,9 +101,7 @@ module.exports = class attribute {
 
 
 	rec_s7_data(data) {
-		console.log("wrgerg")
 		if (this.publish_to_mqtt) {
-			console.log("ergjr0f9mc34h")
 			// round all floating point values up to 3 decimal places
 			if (this.type == "REAL" && this.round_value) {
 				data = Math.round(data * 1000) / 1000;
@@ -119,8 +117,6 @@ module.exports = class attribute {
 			//let should_update = ((now - this.last_update) > this.update_interval) &&
 			//	this.update_interval != 0;
 
-			console.log("54464565544")
-
 			let should_update = false;
 
 			// last_value / last_update update
@@ -130,7 +126,7 @@ module.exports = class attribute {
 
 			// send mqtt msg if necessary
 			if (should_update) {
-				console.log("actually updatng mqtt")
+				console.log("Sending MQTT Message")
 				this.last_value = data;
 				this.last_update = now;
 
@@ -139,8 +135,8 @@ module.exports = class attribute {
 				});
 
 				if (this.write_back) {
-					if (data == this.last_set_data) {
-						// This change was triggered by ourself. Skipping and reseting.
+					if (data === this.last_set_data) {
+						// This change was triggered by ourselves. Skipping and resetting.
 						this.last_set_data = undefined;
 					} else {
 						// Writing back the change to the S7 input.
