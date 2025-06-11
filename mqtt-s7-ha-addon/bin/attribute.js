@@ -101,8 +101,9 @@ module.exports = class attribute {
 
 
 	rec_s7_data(data) {
+		console.log("wrgerg")
 		if (this.publish_to_mqtt) {
-
+			console.log("ergjr0f9mc34h")
 			// round all floating point values up to 3 decimal places
 			if (this.type == "REAL" && this.round_value) {
 				data = Math.round(data * 1000) / 1000;
