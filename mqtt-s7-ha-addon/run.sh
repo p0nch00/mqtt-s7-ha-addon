@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_PATH="/data/config.json"
+CONFIG_PATH="/ha-cfg/mqtts7/config.json"
 APP_CONFIG="/app/src/config.json"
 
 # Create default config if not exists
