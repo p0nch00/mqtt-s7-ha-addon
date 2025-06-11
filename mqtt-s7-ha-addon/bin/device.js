@@ -98,7 +98,7 @@ module.exports = class device {
 	send_discover_msg(info) {
 		// create an topic in which the discovery message can be sent
 		let topic = this.discovery_topic + "/" +
-			this.type + "/s7-connector/" + this.mqtt_name + "/config";
+			this.type + "/" + this.mqtt_name + "/config";
 
 		info.uniq_id = 's7-' + this.mqtt_name;
 
