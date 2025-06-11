@@ -5,7 +5,9 @@ APP_CONFIG="/app/src/config.json"
 
 cp $CONFIG_PATH $APP_CONFIG
 
-ls /app/src
+ls app/src
+
+ls -la
 
 cat $APP_CONFIG
 
