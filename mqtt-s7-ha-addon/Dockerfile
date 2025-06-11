@@ -10,8 +10,8 @@ RUN npm install --only=production
 # Bundle app source
 COPY bin/* ./
 
-# Create a symlink to Home Assistant's /data/config.json
-RUN ln -s /data/config.json /usr/src/app/config.json
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
 # Start CMD
 CMD ["./run.sh"]
