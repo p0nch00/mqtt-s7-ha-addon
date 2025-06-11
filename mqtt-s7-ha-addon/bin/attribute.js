@@ -116,13 +116,15 @@ module.exports = class attribute {
 			const now = Date.now();
 
 			// if time has passed then updated if the update_interval is set
-			let should_update = ((now - this.last_update) > this.update_interval) &&
-				this.update_interval != 0;
+			//let should_update = ((now - this.last_update) > this.update_interval) &&
+			//	this.update_interval != 0;
 
 			console.log("54464565544")
 
+			let should_update = false;
+
 			// last_value / last_update update
-			if (data != this.last_value && this.update_interval == 0) {
+			if (data !== this.last_value) {
 				should_update = true;
 			}
 
