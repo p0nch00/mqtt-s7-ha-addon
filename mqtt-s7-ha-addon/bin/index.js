@@ -67,6 +67,7 @@ function init() {
 
 		// start loop
 		setInterval(() => {
+			console.log("PLC Loop Run");
 			plc_update_loop();
 		}, config.update_time);
 
