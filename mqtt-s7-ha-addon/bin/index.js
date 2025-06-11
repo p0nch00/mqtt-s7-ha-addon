@@ -119,6 +119,8 @@ function plc_update_loop() {
 			let device = topic_parts[1];
 			let attribute = topic_parts[2];
 
+			console.log(readings[topic])
+
 			// if device exists
 			if (devices[device]) {
 				// give all data to device
