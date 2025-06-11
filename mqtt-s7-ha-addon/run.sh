@@ -5,6 +5,6 @@ APP_CONFIG="/app/src/config.json"
 
 ln -sf "$CONFIG_PATH" "$APP_CONFIG"
 
-ls -la /ha-cfg
+cat $CONFIG_PATH
 
 exec npm start
