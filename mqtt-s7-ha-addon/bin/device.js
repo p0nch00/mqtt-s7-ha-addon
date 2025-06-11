@@ -105,6 +105,8 @@ module.exports = class device {
 		this.mqtt_handler.publish(topic, JSON.stringify(info), {
 			retain: this.discovery_retain
 		});
+
+		console.log("Sent discovery message to "+topic)
 	}
 
 	rec_s7_data(attr, data) {
