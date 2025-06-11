@@ -17,9 +17,9 @@ module.exports = class device {
 		this.mqtt_name = config.mqtt;
 
 		const mqtt_Split = this.mqtt_name.split(".")
-		let nameFormat = mqtt_Split[0] + "/" + mqtt_Split[1];
+		//let nameFormat = mqtt_Split[0] + "/" + mqtt_Split[1];
 
-		this.full_mqtt_topic = config.mqtt_base + "/" + nameFormat;
+		this.full_mqtt_topic = config.mqtt_base + "/" + this.mqtt_name;
 
 		// store all attribute objects in this array
 		this.attributes = {};
