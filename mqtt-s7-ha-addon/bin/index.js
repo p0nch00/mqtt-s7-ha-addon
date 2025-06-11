@@ -114,6 +114,7 @@ function plc_update_loop() {
 
 		// publish all data
 		for (var topic in readings) {
+			console.log("Running publish for "+topic)
 			let topic_parts = topic.split('/');
 			let device = topic_parts[1];
 			let attribute = topic_parts[2];
