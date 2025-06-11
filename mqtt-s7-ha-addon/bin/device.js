@@ -15,7 +15,11 @@ module.exports = class device {
 
 		// device topics
 		this.mqtt_name = config.mqtt;
-		this.full_mqtt_topic = config.mqtt_base + "/" + this.mqtt_name;
+
+		const mqtt_Split = this.mqtt_name.split(".")
+		let nameFormat = mqtt_Split[0] + "/" + mqtt_Split[1];
+
+		this.full_mqtt_topic = config.mqtt_base + "/" + nameFormat;
 
 		// store all attribute objects in this array
 		this.attributes = {};
@@ -31,7 +35,7 @@ module.exports = class device {
 			this.full_mqtt_topic);
 
 		// the config could be an object
-		// or simply an string
+		// or simply a string
 		if (typeof config == "object") {
 			new_attribute.plc_address = config.plc;
 
@@ -71,8 +75,8 @@ module.exports = class device {
 		let type = params[0];
 
 		// check if the type is correct
-		// and if it isnt then print some infos
-		if (required_type != "" && type != required_type) {
+		// and if it isn't then print some infos
+		if (required_type !== "" && type !== required_type) {
 			sf.debug("Wrong datatype '" + type + "' at attribute '" + name + "'");
 
 			let numbers = "";
@@ -96,11 +100,14 @@ module.exports = class device {
 	}
 
 	send_discover_msg(info) {
-		// create an topic in which the discovery message can be sent
-		let topic = this.discovery_topic + "/" +
-			this.type + "/" + this.mqtt_name + "/config";
+		const mqtt_Split = this.mqtt_name.split(".")
+		info.unique_id = mqtt_Split[0] + "_" + mqtt_Split[1];
 
-		info.uniq_id = 's7-' + this.mqtt_name;
+		// create a topic in which the discovery message can be sent
+		let topic = this.discovery_topic + "/" +
+			this.type + "/" + info.unique_id + "/config";
+
+
 
 		this.mqtt_handler.publish(topic, JSON.stringify(info), {
 			retain: this.discovery_retain
