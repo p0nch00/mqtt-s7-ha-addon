@@ -132,6 +132,7 @@ function mqttMsgParser(topic, msg) {
 
 
 function plc_update_loop() {
+    console.log("4u8n2nuv23tv")
 	plc.readAllItems((err, readings) => {
 		if (err) {
 			sf.debug("Error while reading from PLC !");

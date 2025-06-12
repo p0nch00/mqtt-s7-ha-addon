@@ -5,7 +5,7 @@ module.exports = class devLight extends device {
 	constructor(plc, mqtt, config, mqtt_base) {
 		super(plc, mqtt, config, mqtt_base);
 
-		// add attributes spezific for a light
+		// add attributes specific for a light
 		// create attribute from config
 
 		// binary state
