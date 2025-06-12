@@ -10,7 +10,7 @@ module.exports = class devLight extends device {
 
 		// binary state
 		if (config.state) {
-			this.create_attribute(config.state, "X", "state");
+			this.create_attribute(config.state, "Q", "state");
 		}
 
 		// one byte for brightness
