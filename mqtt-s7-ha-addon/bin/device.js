@@ -105,7 +105,7 @@ module.exports = class device {
 			new_attribute.type = type;
 		}
 
-		sf.debug("- New attribute '" + new_attribute.full_mqtt_topic + "' was created");
+		console.log("- New attribute '" + new_attribute.full_mqtt_topic + "' was created");
 
 		// save attribute in array
 		this.attributes[name] = new_attribute;
