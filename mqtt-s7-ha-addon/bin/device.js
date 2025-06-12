@@ -85,6 +85,9 @@ module.exports = class device {
 				type = "Q";
 				break;
 		}
+		if (name === "state" && type === "Q") {
+			required_type = "Q"
+		}
 
 		// check if the type is correct
 		// and if it isn't then print some infos
