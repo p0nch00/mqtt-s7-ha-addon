@@ -90,6 +90,7 @@ function init() {
 }
 
 function mqttMsgParser(topic, msg) {
+    console.log("Got MQTT MSG")
 	let topic_parts = topic.split('/');
 
 	// check if the topic is in the mqtt_base
