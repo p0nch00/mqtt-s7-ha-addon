@@ -36,6 +36,8 @@ module.exports = class device {
 		if (typeof config == "object") {
 			new_attribute.plc_address = config.plc;
 
+			console.log(config)
+
 			// optional different set address
 			if (config.set_plc) {
 				new_attribute.plc_set_address = config.set_plc;
