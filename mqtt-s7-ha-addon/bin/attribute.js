@@ -153,12 +153,13 @@ module.exports = class attribute {
 	}
 
 	rec_mqtt_data(data, cb) {
-	    console.log("riejgowi4jgouwjh")
+	    console.log("riejgowi4jgouwjh");
 		// type check
 		let msg = this.formatMessage(data, this.type);
 
 		// no error in formatting
 		if (msg[0] == 0) {
+		    console.log("writetoplc");
 			this.write_to_plc(msg[1], cb);
 		} else {
 			if (cb) cb("Incorrect formating");
