@@ -31,16 +31,42 @@ function init() {
 		config.discovery_retain = config.discovery_retain || false;
 
 		// namespace translation
-		plc.setTranslationCB((topic) => {
-			let topic_parts = topic.split('/');
-			console.log("oirejof3jvoj34oj")
-			// call correct device and ask for address from attribute
-			if (topic_parts[3] == "set") {
-				return devices[topic_parts[1]].get_plc_set_address(topic_parts[2]);
-			} else {
-				return devices[topic_parts[1]].get_plc_address(topic_parts[2]);
-			}
-		});
+        plc.setTranslationCB((topic) => {
+            try {
+                const topic_parts = topic.split('/');
+
+                if (topic_parts.length < 4) {
+                    console.error(`Invalid topic format: ${topic}`);
+                    return null;
+                }
+
+                const deviceId = topic_parts[1];
+                const attribute = topic_parts[2];
+                const isSet = topic_parts[3] === "set";
+
+                const device = devices[deviceId];
+                if (!device) {
+                    console.error(`Unknown device ID: ${deviceId}`);
+                    return null;
+                }
+
+                const address = isSet
+                    ? device.get_plc_set_address(attribute)
+                    : device.get_plc_address(attribute);
+
+                if (!address) {
+                    console.error(`No PLC address found for ${topic}`);
+                    return null;
+                }
+
+                return address;
+
+            } catch (err) {
+                console.error(`Error translating topic "${topic}":`, err);
+                return null;
+            }
+        });
+
 
 		// parse config and create devices
 		if (config.devices != undefined) {
