@@ -68,8 +68,12 @@ module.exports = class device {
 
 		// split the plc adress to get the type
 		let offset = new_attribute.plc_address.split(',');
-		let params = offset[1].match(/(\d+|\D+)/g);
-		let type = params[0];
+	    let params = offset[0].match(/(\d+|\D+)/g);
+        let type = params[0];
+		if (offset.length !== 1) {
+				params = offset[1].match(/(\d+|\D+)/g);
+				type = params[0];
+		}
 
 		// check if the type is correct
 		// and if it isn't then print some infos

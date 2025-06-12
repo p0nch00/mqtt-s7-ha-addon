@@ -36,7 +36,7 @@ module.exports = class devSensor extends device {
 			}
 
 			// if this sensor is binary
-			if (this.type == "binary_sensor") {
+			if (this.type === "binary_sensor") {
 				info.payload_on = "true";
 				info.payload_off = "false";
 			}
