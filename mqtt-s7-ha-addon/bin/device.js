@@ -37,8 +37,11 @@ module.exports = class device {
 			new_attribute.plc_address = config.plc;
 
 			// optional different set address
-			if (config.set_plc)
+			if (config.set_plc) {
 				new_attribute.plc_set_address = config.set_plc;
+				console.log("ferfkeropkegerghw46");
+				console.log(config.set_plc)
+			}
 
 			// optional Read Write config
 			if (config.rw)
