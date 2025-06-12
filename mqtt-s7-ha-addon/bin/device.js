@@ -77,6 +77,7 @@ module.exports = class device {
 				params = offset[1].match(/(\d+|\D+)/g);
 				type = params[0];
 		}
+		console.log("Created entry")
 
 		//Translations from Siemens TIA in german
 		switch (type) {
