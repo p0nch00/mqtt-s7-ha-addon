@@ -75,6 +75,13 @@ module.exports = class device {
 				type = params[0];
 		}
 
+		//Translations from Siemens TIA in german
+		switch (type) {
+			case "A":
+				type = "Q";
+				break;
+		}
+
 		// check if the type is correct
 		// and if it isn't then print some infos
 		if (required_type !== "" && type !== required_type) {
