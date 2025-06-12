@@ -33,8 +33,10 @@ function init() {
 		// namespace translation
 		plc.setTranslationCB((topic) => {
 			let topic_parts = topic.split('/');
-			console.log("oirejof3jvoj34oj")
+			console.log("oirejof3jvoj34oj");
 			// call correct device and ask for address from attribute
+			console.log(topic_parts);
+
 			if (topic_parts[3] == "set") {
 				return devices[topic_parts[1]].get_plc_set_address(topic_parts[2]);
 			} else {
