@@ -153,6 +153,7 @@ module.exports = class attribute {
 	}
 
 	rec_mqtt_data(data, cb) {
+	    console.log("riejgowi4jgouwjh")
 		// type check
 		let msg = this.formatMessage(data, this.type);
 
