@@ -40,7 +40,7 @@ module.exports = class devWindowClosed extends device {
 				info.payload_on = "true";
 				info.payload_off = "false";
 			}
-			this.deviceClass = "window"
+			info.device_class = "window"
 		}
 
 		super.send_discover_msg(info);
