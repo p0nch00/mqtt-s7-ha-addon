@@ -9,6 +9,7 @@ let dev_switch = require('./devices/switch.js');
 let dev_climate = require('./devices/climate.js');
 let dev_binCover = require('./devices/binaryCover.js');
 let dev_light_button = require('./devices/lightbutton.js')
+let dev_window_closed = require('./devices/windowClosed.js')
 
 module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 	let type = config.type.toLowerCase();
@@ -69,6 +70,10 @@ module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 
 		case "lightbutton":
 		    return new dev_light_button(plc, mqtt, config);
+		    break;
+
+		case "windowclosed":
+		    return new dev_window_closed(plc, mqtt, config);
 		    break;
 
 		default:
