@@ -157,7 +157,7 @@ module.exports = class attribute {
 		// type check
 		let msg = this.formatMessage(data, this.type);
 
-		console.log(msg)
+		console.log(data)
 		console.log(cb)
 		// no error in formatting
 		if (msg[0] === 0) {
