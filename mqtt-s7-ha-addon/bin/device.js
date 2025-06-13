@@ -142,6 +142,9 @@ module.exports = class device {
 
 	rec_mqtt_data(attr, data, cb) {
 		console.log("fwefwefwefwefw");
+		console.log(attr);
+		console.log(data);
+		console.log(cb);
 		// check if attribute with this name exists
 		if (this.attributes[attr]) {
 
