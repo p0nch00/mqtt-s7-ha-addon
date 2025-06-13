@@ -58,6 +58,7 @@ module.exports = class devWindowClosed extends device {
 			    data = "true";
 			    break;
 		}
+		console.log(data)
 		super.rec_s7_data(attr, data);
 	}
 
