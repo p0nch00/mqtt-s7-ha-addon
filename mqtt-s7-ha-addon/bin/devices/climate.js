@@ -76,7 +76,9 @@ module.exports = class devLight extends device {
 	}
 
 	rec_s7_data(attr, data) {
-	    console.log(attr + "-----" +data)
+	    if (attr === "current_temperature") {
+	        data = Math.round(data * 10) / 10;
+	    }
 		super.rec_s7_data(attr, data);
 	}
 
