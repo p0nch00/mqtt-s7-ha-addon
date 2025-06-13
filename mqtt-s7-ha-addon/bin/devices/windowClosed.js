@@ -48,8 +48,6 @@ module.exports = class devWindowClosed extends device {
 
 //Invert data for sensor that is on if window closed
 	rec_s7_data(attr, data) {
-	    console.log("oerjiorejgoerjgoejrgojergoijwerü0fv245gvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-	    console.log(data)
 	    switch (data) {
 			case true:
 			    data = false;
@@ -60,7 +58,6 @@ module.exports = class devWindowClosed extends device {
 			default:
 			    console.log("INVALID RETURN TYPE FROM PLC");
 		}
-		console.log(data)
 		super.rec_s7_data(attr, data);
 	}
 
