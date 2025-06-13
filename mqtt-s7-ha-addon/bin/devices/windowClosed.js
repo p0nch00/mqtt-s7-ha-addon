@@ -46,5 +46,18 @@ module.exports = class devWindowClosed extends device {
 		super.send_discover_msg(info);
 	}
 
+//Invert data for sensor that is on if window closed
+	rec_s7_data(attr, data) {
+	    switch (data) {
+			case "true":
+			    data = "false";
+			    break;
+			case "false":
+			    data = "true";
+			    break;
+		}
+		super.rec_s7_data(attr, data);
+	}
+
 
 }
