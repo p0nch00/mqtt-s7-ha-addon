@@ -156,9 +156,8 @@ module.exports = class attribute {
 	    console.log("riejgowi4jgouwjh");
 		// type check
 		let msg = this.formatMessage(data, this.type);
-
-		console.log(data)
-		console.log(cb)
+		console.log(this.type)
+		console.log(msg);
 		// no error in formatting
 		if (msg[0] === 0) {
 		    console.log("writetoplc");
