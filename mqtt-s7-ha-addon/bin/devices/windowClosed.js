@@ -48,7 +48,8 @@ module.exports = class devWindowClosed extends device {
 
 //Invert data for sensor that is on if window closed
 	rec_s7_data(attr, data) {
-	console.log("oerjiorejgoerjgoejrgojergoijwerü0fv245gvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+	    console.log("oerjiorejgoerjgoejrgojergoijwerü0fv245gvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+	    console.log(data)
 	    switch (data) {
 			case "true":
 			    data = "false";
