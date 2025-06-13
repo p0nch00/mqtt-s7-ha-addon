@@ -57,7 +57,7 @@ module.exports = class devLightButton extends device {
 			// callback function of attribute when write was finished
 			console.log("CALLBACK!!!!");
 			console.log(this.get_plc_address(attr));
-			console.log(this.attributes[attr].state);
+			console.log(this.attributes);
 		});
 	}
 
