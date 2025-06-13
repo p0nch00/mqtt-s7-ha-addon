@@ -96,12 +96,13 @@ function mqttMsgParser(topic, msg) {
 	console.log(msg);
 	// check if the topic is in the mqtt_base
 	if (topic_parts[0] == config.mqtt_base) {
+
 		let device = topic_parts[1];
 		let attribute = topic_parts[2];
-
 		// if device exists
 		if (devices[device]) {
-
+		    console.log(device);
+		    console.log(attribute);
 			// give all data to device
 			devices[device].rec_mqtt_data(attribute, msg);
 		}
