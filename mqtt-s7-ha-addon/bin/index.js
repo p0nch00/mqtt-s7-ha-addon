@@ -92,7 +92,8 @@ function init() {
 function mqttMsgParser(topic, msg) {
     console.log("Got MQTT MSG")
 	let topic_parts = topic.split('/');
-
+	console.log(topic);
+	console.log(msg);
 	// check if the topic is in the mqtt_base
 	if (topic_parts[0] == config.mqtt_base) {
 		let device = topic_parts[1];
@@ -114,7 +115,7 @@ function plc_update_loop() {
 			sf.debug("Error while reading from PLC !");
 			return;
 		}
-		console.log(readings)
+		console.log(readings);
 
 		// publish all data
 		for (var topic in readings) {
