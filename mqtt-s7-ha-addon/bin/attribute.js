@@ -153,7 +153,6 @@ module.exports = class attribute {
 	}
 
 	rec_mqtt_data(data, cb) {
-	    console.log("riejgowi4jgouwjh");
 		// type check
 		// dynamic type adjust
 		let typeAdjust = this.type
@@ -167,11 +166,9 @@ module.exports = class attribute {
 		}
 
 		let msg = this.formatMessage(data, typeAdjust);
-		console.log(msg);
 
 		// no error in formatting
 		if (msg[0] === 0) {
-		    console.log("writetoplc");
 			this.write_to_plc(msg[1], cb);
 		} else {
 			if (cb) cb("Incorrect formating");
@@ -179,16 +176,13 @@ module.exports = class attribute {
 	}
 
 	write_to_plc(data, cb) {
-	    console.log("WriteToPLC!!!!!")
 		let that = this;
 		this.last_set_data = data;
 
-		console.log(data)
 
 		// write to plc
 		this.plc_handler.writeItems(this.full_mqtt_topic + "/set", data, (error) => {
 			sf.plc_response(error);
-			console.log(error);
 
 			if (cb) cb(error);
 		});

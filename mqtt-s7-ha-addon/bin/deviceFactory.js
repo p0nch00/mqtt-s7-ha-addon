@@ -8,6 +8,7 @@ let dev_sensor = require('./devices/sensor.js');
 let dev_switch = require('./devices/switch.js');
 let dev_climate = require('./devices/climate.js');
 let dev_binCover = require('./devices/binaryCover.js');
+let dev_light_button = require('./devices/lightbutton.js')
 
 module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 	let type = config.type.toLowerCase();
@@ -65,6 +66,10 @@ module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 		case "binarycover":
 			return new dev_binCover(plc, mqtt, config);
 			break;
+
+		case "lightbutton":
+		    return new dev_light_button(plc, mqtt, config);
+		    break;
 
 		default:
 			sf.debug("Unknown device type '" + type + "'");
