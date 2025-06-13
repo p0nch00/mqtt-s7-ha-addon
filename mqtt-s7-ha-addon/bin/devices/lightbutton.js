@@ -56,9 +56,6 @@ module.exports = class devLightButton extends device {
 		super.rec_mqtt_data(attr, data, (error) => {
 			// callback function of attribute when write was finished
 			console.log("CALLBACK!!!!");
-			console.log(this.get_plc_address(attr));
-			console.log(this.attributes);
-			this.plc_handler.read(this.get_plc_address());
 		});
 	}
 
