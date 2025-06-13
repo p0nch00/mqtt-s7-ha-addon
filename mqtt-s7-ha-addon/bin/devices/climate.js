@@ -75,5 +75,10 @@ module.exports = class devLight extends device {
 		super.send_discover_msg(info);
 	}
 
+	rec_s7_data(attr, data) {
+	    console.log(attr + "-----" +data)
+		super.rec_s7_data(attr, data);
+	}
+
 
 }
