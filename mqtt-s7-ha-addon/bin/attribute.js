@@ -167,6 +167,8 @@ module.exports = class attribute {
 
 		let msg = this.formatMessage(data, typeAdjust);
 
+		console.log("goji4o5opkg4k5jgokg5jiofkrjti45ko3elrfok4epdl");
+		console.log(msg);
 		// no error in formatting
 		if (msg[0] === 0) {
 			this.write_to_plc(msg[1], cb);
