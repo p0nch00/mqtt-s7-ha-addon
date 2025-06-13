@@ -17,7 +17,7 @@ module.exports = class devSensor extends device {
 
 		// if a boolean adress is given
 		// change the type from "sensor" to "binary_sensor"
-		if (this.attributes["state"].type === "X" || this.attributes["state"].type === "Q") {
+		if (this.attributes["state"].type === "X" || this.attributes["state"].type === "Q" || this.attributes["state"].type === "I") {
 			this.type = "binary_sensor";
 		}
 	}
