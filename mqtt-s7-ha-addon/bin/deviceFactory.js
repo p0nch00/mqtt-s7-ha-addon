@@ -10,6 +10,8 @@ let dev_climate = require('./devices/climate.js');
 let dev_binCover = require('./devices/binaryCover.js');
 let dev_light_button = require('./devices/lightbutton.js')
 let dev_window_closed = require('./devices/windowClosed.js')
+let dev_door = require('./devices/door.js')
+
 
 module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 	let type = config.type.toLowerCase();
@@ -74,6 +76,10 @@ module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 
 		case "windowclosed":
 		    return new dev_window_closed(plc, mqtt, config);
+		    break;
+
+		case "door":
+		    return new dev_door(plc, mqtt, config);
 		    break;
 
 		default:
