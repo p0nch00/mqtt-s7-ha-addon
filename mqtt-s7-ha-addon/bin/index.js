@@ -103,6 +103,7 @@ function mqttMsgParser(topic, msg) {
 		if (devices[device]) {
 		    console.log(device);
 		    console.log(attribute);
+		    console.log(msg);
 			// give all data to device
 			devices[device].rec_mqtt_data(attribute, msg);
 		}

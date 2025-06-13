@@ -40,6 +40,7 @@ module.exports = class devBinaryCover extends device {
 	}
 
 	rec_mqtt_data(attr, data) {
+		console.log("wedkwepofwefwef");
 
 		// call parent class method
 		super.rec_mqtt_data(attr, data, (error) => {
