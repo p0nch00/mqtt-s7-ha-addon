@@ -160,7 +160,12 @@ module.exports = class attribute {
 		switch (this.type) {
 			case "Q":
 			    typeAdjust = "X";
+			    break;
+			case "I":
+			    typeAdjust = "X";
+			    break;
 		}
+
 		let msg = this.formatMessage(data, typeAdjust);
 		console.log(msg);
 
@@ -174,12 +179,16 @@ module.exports = class attribute {
 	}
 
 	write_to_plc(data, cb) {
+	    console.log("WriteToPLC!!!!!")
 		let that = this;
 		this.last_set_data = data;
+
+		console.log(data)
 
 		// write to plc
 		this.plc_handler.writeItems(this.full_mqtt_topic + "/set", data, (error) => {
 			sf.plc_response(error);
+			console.log(error);
 
 			if (cb) cb(error);
 		});
