@@ -58,6 +58,7 @@ module.exports = class devLightButton extends device {
 			console.log("CALLBACK!!!!");
 			console.log(this.get_plc_address(attr));
 			console.log(this.attributes);
+			this.plc_handler._read(this.get_plc_address());
 		});
 	}
 
