@@ -157,8 +157,9 @@ module.exports = class attribute {
 		// type check
 		let msg = this.formatMessage(data, this.type);
 
+		console.log(msg)
 		// no error in formatting
-		if (msg[0] == 0) {
+		if (msg[0] === 0) {
 		    console.log("writetoplc");
 			this.write_to_plc(msg[1], cb);
 		} else {
