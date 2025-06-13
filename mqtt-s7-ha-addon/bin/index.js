@@ -33,7 +33,6 @@ function init() {
 		// namespace translation
 		plc.setTranslationCB((topic) => {
 			let topic_parts = topic.split('/');
-			console.log("oirejof3jvoj34oj");
 			// call correct device and ask for address from attribute
 			console.log(topic_parts);
 
@@ -90,10 +89,7 @@ function init() {
 }
 
 function mqttMsgParser(topic, msg) {
-    console.log("Got MQTT MSG")
 	let topic_parts = topic.split('/');
-	console.log(topic);
-	console.log(msg);
 	// check if the topic is in the mqtt_base
 	if (topic_parts[0] == config.mqtt_base) {
 
@@ -101,9 +97,6 @@ function mqttMsgParser(topic, msg) {
 		let attribute = topic_parts[2];
 		// if device exists
 		if (devices[device]) {
-		    console.log(device);
-		    console.log(attribute);
-		    console.log(msg);
 			// give all data to device
 			devices[device].rec_mqtt_data(attribute, msg);
 		}
@@ -117,7 +110,6 @@ function plc_update_loop() {
 			sf.debug("Error while reading from PLC !");
 			return;
 		}
-		console.log(readings);
 
 		// publish all data
 		for (var topic in readings) {
@@ -125,7 +117,6 @@ function plc_update_loop() {
 			let device = topic_parts[1];
 			let attribute = topic_parts[2];
 
-			console.log(readings[topic])
 
 			// if device exists
 			if (devices[device]) {
