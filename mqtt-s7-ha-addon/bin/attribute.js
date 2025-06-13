@@ -155,9 +155,15 @@ module.exports = class attribute {
 	rec_mqtt_data(data, cb) {
 	    console.log("riejgowi4jgouwjh");
 		// type check
-		let msg = this.formatMessage(data, this.type);
-		console.log(this.type)
+		// dynamic type adjust
+		let typeAdjust = this.type
+		switch (this.type) {
+			case "Q":
+			    typeAdjust = "X";
+		}
+		let msg = this.formatMessage(data, typeAdjust);
 		console.log(msg);
+
 		// no error in formatting
 		if (msg[0] === 0) {
 		    console.log("writetoplc");
