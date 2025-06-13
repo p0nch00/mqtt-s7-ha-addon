@@ -158,6 +158,7 @@ module.exports = class attribute {
 		let msg = this.formatMessage(data, this.type);
 
 		console.log(msg)
+		console.log(cb)
 		// no error in formatting
 		if (msg[0] === 0) {
 		    console.log("writetoplc");
