@@ -55,7 +55,7 @@ module.exports = class devLightButton extends device {
 		// call parent class method
 		super.rec_mqtt_data(attr, data, (error) => {
 			// callback function of attribute when write was finished
-			console.log("CALLBACK!!!!");
+			super.rec_s7_data("state","true")
 		});
 	}
 
