@@ -118,6 +118,7 @@ module.exports = class device {
 		const mqtt_Split = this.mqtt_name.split(".")
 		info.unique_id = mqtt_Split[0] + "_" + mqtt_Split[1];
 
+
 		// create a topic in which the discovery message can be sent
 		let topic = this.discovery_topic + "/" +
 			this.type + "/" + info.unique_id + "/config";
@@ -130,6 +131,24 @@ module.exports = class device {
 
 		console.log("Sent discovery message to "+topic)
 	}
+
+	send_discover_msg_override(info,typeOverride) {
+    		const mqtt_Split = this.mqtt_name.split(".")
+    		info.unique_id = mqtt_Split[0] + "_" + mqtt_Split[1];
+
+
+    		// create a topic in which the discovery message can be sent
+    		let topic = this.discovery_topic + "/" +
+    			typeOverride + "/" + info.unique_id + "/config";
+
+
+
+    		this.mqtt_handler.publish(topic, JSON.stringify(info), {
+    			retain: this.discovery_retain
+    		});
+
+    		console.log("Sent discovery message to "+topic)
+    }
 
 	rec_s7_data(attr, data) {
 		// check if attribute with this name exists

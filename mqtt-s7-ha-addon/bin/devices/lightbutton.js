@@ -46,7 +46,7 @@ module.exports = class devLightButton extends device {
 				info.brightness_state_topic = this.attributes["brightness"].full_mqtt_topic;
 		}
 
-		super.send_discover_msg(info);
+		super.send_discover_msg_override(info,"light");
 	}
 
 	rec_mqtt_data(attr, data) {
