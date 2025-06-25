@@ -29,6 +29,8 @@ module.exports = class devLight extends device {
 			this.attributes["target_temperature"].set_RW("w");
 		}
 
+		this.lastUpdated = 0;
+
 		// Features for Future ...
 
 		// binary mode true = heating, false = cooling ->  mode_command_topic
@@ -79,7 +81,10 @@ module.exports = class devLight extends device {
 	    if (attr === "current_temperature") {
 	        data = Math.round(data * 10) / 10;
 	    }
-		super.rec_s7_data(attr, data);
+	    if (this.lastUpdated + 300000 < Date.now()) {
+	    	this.lastUpdated = Date.now();
+	    	super.rec_s7_data(attr, data);
+	    }
 	}
 
 
