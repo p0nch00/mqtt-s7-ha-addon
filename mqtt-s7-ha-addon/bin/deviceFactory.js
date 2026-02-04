@@ -11,6 +11,7 @@ let dev_binCover = require('./devices/binaryCover.js');
 let dev_light_button = require('./devices/lightbutton.js')
 let dev_window_closed = require('./devices/windowClosed.js')
 let dev_door = require('./devices/door.js')
+let dev_number = require('./devices/number.js')
 
 
 module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
@@ -81,6 +82,10 @@ module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 		case "door":
 		    return new dev_door(plc, mqtt, config);
 		    break;
+
+		case "number":
+			return new dev_number(plc, mqtt, config);
+			break;
 
 		default:
 			sf.debug("Unknown device type '" + type + "'");

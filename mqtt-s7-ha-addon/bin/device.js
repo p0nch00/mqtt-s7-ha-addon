@@ -40,7 +40,6 @@ module.exports = class device {
 			// optional different set address
 			if (config.set_plc) {
 				new_attribute.plc_set_address = config.set_plc;
-				console.log(config.set_plc)
 			}
 
 			// optional Read Write config
@@ -62,6 +61,13 @@ module.exports = class device {
 			// optional write back changes from plc to set_plc
 			if (config.write_back)
 				new_attribute.write_back = config.write_back;
+
+			if (config.min)
+				new_attribute.min = config.min;
+
+			if (config.max)
+				new_attribute.max = config.max;
+
 		} else {
 			new_attribute.plc_address = config;
 		}
