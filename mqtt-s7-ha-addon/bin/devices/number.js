@@ -17,7 +17,7 @@ module.exports = class devLightButton extends device {
 
     send_discover_msg() {
         let info = {
-            name: this.name,
+            name: this.name
         };
 
         if (this.attributes["state"]) {
