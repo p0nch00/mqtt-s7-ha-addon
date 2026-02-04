@@ -221,6 +221,15 @@ module.exports = class attribute {
 				}
 				break;
 
+			case "DI":
+				write = parseInt(msg);
+				if (isNaN(write)) {
+					if (noDebugOut)
+						sf.debug("can´t format incoming message '" + msg + "' -> skipping it");
+					return [-2];
+				}
+				break;
+
 			case "REAL":
 				write = parseFloat(msg);
 				if (isNaN(write)) {
