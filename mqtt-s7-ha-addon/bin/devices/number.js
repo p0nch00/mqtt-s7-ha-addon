@@ -10,7 +10,7 @@ module.exports = class devLightButton extends device {
 
         // number state
         if (config.state) {
-            this.create_attribute(config.state, "BYTE", "state");
+            this.create_attribute(config.state, "", "state");
         }
 
     }
