@@ -68,6 +68,9 @@ module.exports = class device {
 			if (config.max)
 				new_attribute.max = config.max;
 
+			if (config.step)
+				new_attribute.step = config.step;
+
 		} else {
 			new_attribute.plc_address = config;
 		}

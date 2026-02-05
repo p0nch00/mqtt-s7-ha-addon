@@ -1,5 +1,5 @@
 name: mqtt-s7-ha-addon
-version: 1.0.89
+version: 1.0.90
 slug: s7tomqtt
 url: https://github.com/p0nch00/mqtt-s7-ha-addon
 description: Connect S7 to MQTT
