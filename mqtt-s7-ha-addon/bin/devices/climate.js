@@ -27,6 +27,8 @@ module.exports = class devLight extends device {
 		if (config.target_temperature) {
 			this.create_attribute(config.target_temperature, "REAL", "target_temperature");
 			this.attributes["target_temperature"].set_RW("rw");
+			this.attributes["target_temperature"].update_interval = 900000; // 15 min
+
 		}
 
 		this.lastUpdated = 0;
@@ -66,12 +68,10 @@ module.exports = class devLight extends device {
 
 		if (this.attributes["target_temperature"]) {
 			// add only temperature_command_topic if the attribute is allowed to write
-			if (this.attributes["target_temperature"].write_to_s7)
-				info.temperature_command_topic = this.attributes["target_temperature"].full_mqtt_topic + "/set";
+			info.temperature_command_topic = this.attributes["target_temperature"].full_mqtt_topic + "/set";
 
 			// add only temperature_state_topic if attribute is allowed to read
-			if (this.attributes["target_temperature"].publish_to_mqtt)
-				info.temperature_state_topic = this.attributes["target_temperature"].full_mqtt_topic;
+			info.temperature_state_topic = this.attributes["target_temperature"].full_mqtt_topic;
 		}
 
 		super.send_discover_msg(info);
