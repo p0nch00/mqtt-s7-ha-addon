@@ -13,6 +13,10 @@ module.exports = class devLight extends device {
 			this.create_attribute(config.state, "X", "state");
 		}
 
+		if (config.cooling_mode) {
+			this.create_attribute(config.cooling_mode,"X","cooling_mode")
+		}
+
 		// current temperature
 		if (config.current_temperature) {
 			this.create_attribute(config.current_temperature, "REAL", "current_temperature");
@@ -32,6 +36,8 @@ module.exports = class devLight extends device {
 		}
 
 		this.lastUpdated = 0;
+		this.coolingMode = false;
+		this.valve = false;
 
 		// Features for Future ...
 
@@ -59,12 +65,18 @@ module.exports = class devLight extends device {
 
 		if (this.attributes["state"]) {
 			// add only command_topic if the attribute is allowed to write
-			if (this.attributes["state"].write_to_s7)
-				info.power_command_topic = this.attributes["state"].full_mqtt_topic + "/set";
+			//if (this.attributes["state"].write_to_s7)
+			//	info.power_command_topic = this.attributes["state"].full_mqtt_topic + "/set";
+			info.mode_state_topic = this.attributes["state"].full_mqtt_topic;
 
-			// climate has no state topic for power to subscribe
-			// info.power_state_topic = this.attributes["state"].full_mqtt_topic;
+			if (this.attributes["cooling_mode"]) {
+				info.modes = ["off","heat","cool"];
+			} else {
+				info.modes = ["off","heat"];
+			}
 		}
+
+
 
 		if (this.attributes["target_temperature"]) {
 			// add only temperature_command_topic if the attribute is allowed to write
@@ -85,6 +97,41 @@ module.exports = class devLight extends device {
 	    	this.lastUpdated = Date.now();
 	    	super.rec_s7_data(attr, data);
 	    }
+
+		if (this.attributes["cooling_mode"]) {
+			if (attr == "cooling_mode") {
+				this.coolingMode = data;
+				if (data && this.valve) {
+					super.rec_s7_data("state","cool");
+				} else if (!data && this.valve) {
+					super.rec_s7_data("state","heat");
+				} else {
+					super.rec_s7_data("state","off");
+				}
+			}
+
+			if (attr == "state") {
+				this.valve = data;
+				if (data && this.coolingMode) {
+					super.rec_s7_data("state","cool");
+				} else if (data && !this.coolingMode) {
+					super.rec_s7_data("state","heat");
+				} else {
+					super.rec_s7_data("state","off");
+				}
+			}
+		} else {
+			if (attr == "state") {
+				if (data) {
+					super.rec_s7_data("state","heat");
+				} else {
+					super.rec_s7_data("state","off");
+				}
+			}
+		}
+
+
+
 
 		if (attr === "target_temperature" && this.lastUpdated + 300000 < Date.now()) {
 			this.lastUpdated = Date.now();
