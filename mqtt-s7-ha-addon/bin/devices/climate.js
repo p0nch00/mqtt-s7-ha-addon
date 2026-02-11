@@ -14,7 +14,7 @@ module.exports = class devLight extends device {
 		}
 
 		if (config.cooling_mode) {
-			this.create_attribute(config.cooling_mode,"Q","cooling_mode")
+			this.create_attribute(config.cooling_mode,"X","cooling_mode")
 		}
 
 		// current temperature

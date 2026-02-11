@@ -97,6 +97,9 @@ module.exports = class device {
 		if (name === "state" && type === "Q") {
 			required_type = "Q"
 		}
+		if (name === "cooling_mode" && type === "Q") {
+			required_type = "Q"
+		}
 
 		// check if the type is correct
 		// and if it isn't then print some infos
