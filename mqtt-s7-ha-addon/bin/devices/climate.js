@@ -55,9 +55,6 @@ module.exports = class devLight extends device {
 	send_discover_msg() {
 		let info = {
 			name: this.name,
-			send_if_off: false,
-			payload_on: "true",
-			payload_off: "false"
 		};
 
 		if (this.attributes["current_temperature"])
