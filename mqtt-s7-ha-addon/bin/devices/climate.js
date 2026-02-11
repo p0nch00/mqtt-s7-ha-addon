@@ -26,7 +26,7 @@ module.exports = class devLight extends device {
 		// target temperature
 		if (config.target_temperature) {
 			this.create_attribute(config.target_temperature, "REAL", "target_temperature");
-			this.attributes["target_temperature"].set_RW("w");
+			this.attributes["target_temperature"].set_RW("rw");
 		}
 
 		this.lastUpdated = 0;
