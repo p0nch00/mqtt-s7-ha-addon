@@ -138,8 +138,9 @@ module.exports = class devLight extends device {
 
 	rec_mqtt_data(attr, data, cb) {
 		super.rec_mqtt_data(attr, data, (error) => {
-			// callback function of attribute when write was finished
-			super.rec_s7_data("state",data)
+			if (attr == "target_temperature") {
+				super.rec_s7_data(attr,data);
+			}
 		});
 	}
 
