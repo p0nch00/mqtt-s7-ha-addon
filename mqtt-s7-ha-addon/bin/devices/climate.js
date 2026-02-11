@@ -85,6 +85,11 @@ module.exports = class devLight extends device {
 	    	this.lastUpdated = Date.now();
 	    	super.rec_s7_data(attr, data);
 	    }
+
+		if (attr === "target_temperature" && this.lastUpdated + 300000 < Date.now()) {
+			this.lastUpdated = Date.now();
+			super.rec_s7_data(attr, data);
+		}
 	}
 
 
