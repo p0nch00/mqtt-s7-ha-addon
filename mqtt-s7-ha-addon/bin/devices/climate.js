@@ -36,6 +36,7 @@ module.exports = class devLight extends device {
 		}
 
 		this.lastUpdated = 0;
+		this.lastUpdatedTargetTemp = 0;
 		this.coolingMode = false;
 		this.valve = false;
 
@@ -130,8 +131,8 @@ module.exports = class devLight extends device {
 
 
 
-		if (attr === "target_temperature" && this.lastUpdated + 300000 < Date.now()) {
-			this.lastUpdated = Date.now();
+		if (attr === "target_temperature" && this.lastUpdatedTargetTemp + 300000 < Date.now()) {
+			this.lastUpdatedTargetTemp = Date.now();
 			super.rec_s7_data(attr, data);
 		}
 	}
