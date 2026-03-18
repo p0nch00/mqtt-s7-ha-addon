@@ -46,17 +46,25 @@ module.exports = class devLightButton extends device {
 				info.brightness_state_topic = this.attributes["brightness"].full_mqtt_topic;
 		}
 
+		this.state = false;
+
 		super.send_discover_msg_override(info,"light");
 	}
 
 	rec_mqtt_data(attr, data) {
-	    console.log("LIGHTBUTTON");
-	    data = "true"
-		// call parent class method
-		super.rec_mqtt_data(attr, data, (error) => {
-			// callback function of attribute when write was finished
-			super.rec_s7_data("state","true")
-		});
+	    if (this.state !== data) {
+			data = "true"
+			// call parent class method
+			super.rec_mqtt_data(attr, data, (error) => {
+				// callback function of attribute when write was finished
+				super.rec_s7_data("state","true")
+			});
+		}
+	}
+
+	rec_s7_data(attr, data) {
+		this.state = data;
+		super.rec_s7_data(attr, data);
 	}
 
 

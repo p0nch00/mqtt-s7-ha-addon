@@ -12,6 +12,7 @@ let dev_light_button = require('./devices/lightbutton.js')
 let dev_window_closed = require('./devices/windowClosed.js')
 let dev_door = require('./devices/door.js')
 let dev_number = require('./devices/number.js')
+let dev_switchbutton = require('./devices/switchbutton.js')
 
 
 module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
@@ -74,6 +75,10 @@ module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 		case "lightbutton":
 		    return new dev_light_button(plc, mqtt, config);
 		    break;
+
+		case "switchbutton":
+			return new dev_switchbutton(plc, mqtt, config);
+			break;
 
 		case "windowclosed":
 		    return new dev_window_closed(plc, mqtt, config);
