@@ -52,9 +52,6 @@ module.exports = class devLightButton extends device {
 	}
 
 	rec_mqtt_data(attr, data) {
-		console.log("lightbutton")
-		console.log(this.state)
-		console.log(data)
 	    if (this.state != (data == "true")) {
 			data = "true"
 			// call parent class method

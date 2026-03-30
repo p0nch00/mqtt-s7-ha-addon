@@ -52,7 +52,7 @@ module.exports = class devLightButton extends device {
     }
 
     rec_mqtt_data(attr, data) {
-        if (this.state !== data) {
+        if (this.state != (data == "true")) {
             data = "true"
             // call parent class method
             super.rec_mqtt_data(attr, data, (error) => {
