@@ -15,7 +15,7 @@ let dev_number = require('./devices/number.js')
 let dev_switchbutton = require('./devices/switchbutton.js')
 
 
-module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
+module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base, coolingMode) {
 	let type = config.type.toLowerCase();
 
 	// check name
@@ -46,6 +46,7 @@ module.exports = function deviceFactory(devices, plc, mqtt, config, mqtt_base) {
 	config.name = name;
 	config.mqtt = new_mqtt_name;
 	config.mqtt_base = mqtt_base;
+	config.cooling_mode = coolingMode;
 
 	switch (type) {
 		case "light":

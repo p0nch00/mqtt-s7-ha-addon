@@ -30,6 +30,7 @@ function init() {
 		config.discovery_prefix = config.discovery_prefix || "homeassistant";
 		config.discovery_retain = config.discovery_retain || false;
 
+
 		// namespace translation
 		plc.setTranslationCB((topic) => {
 			let topic_parts = topic.split('/');
@@ -49,7 +50,7 @@ function init() {
 			// create for each config entry an object
 			// and save it to the array
 			config.devices.forEach((dev) => {
-				let new_device = deviceFactory(devices, plc, mqtt, dev, config.mqtt_base);
+				let new_device = deviceFactory(devices, plc, mqtt, dev, config.mqtt_base, config.cooling_mode);
 
 				// perform discovery message
 				new_device.discovery_topic = config.discovery_prefix;
